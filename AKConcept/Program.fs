@@ -1,5 +1,6 @@
 ﻿open Confluent.Kafka
 open System.Threading
+open CremeEntity
 open Serilog
 
 let main _ =
@@ -34,7 +35,16 @@ let handle log consumeResult =
     task {
         let log: ILogger = log
         let consumeResult: ConsumeResult<string, string> = consumeResult
-        log.Information $"[Consumer] Consumed record with key %s{consumeResult.Message.Key} and value %s{consumeResult.Message.Value}"
+        let dto =
+            consumeResult.Message.Value
+            |> Helper.deserialize<CremeEvent<NotificationEventDTO>>
+        
+        match dto with
+        | Ok dtoData ->
+            log.Information $"[Consumer] Consumed record with key %s{consumeResult.Message.Key} and action %s{dtoData.data.Action}"
+            log.Information $"[Consumer] Consumed record with key %s{consumeResult.Message.Key} and targets %s{dtoData.data.TargetsType}"
+        | Error _ ->
+            log.Error $"[Consumer] Cannot decode event"
     }
 
 [<EntryPoint>]
