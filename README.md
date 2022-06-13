@@ -1,6 +1,6 @@
 # Kafka
 
-A simple example of running [Apache Kafka](https://kafka.apache.org/) with F# 
+A simple example of [Apache Kafka](https://kafka.apache.org/) with F# 
 
 ## Run
 
