@@ -5,7 +5,7 @@ A simple example of [Apache Kafka](https://kafka.apache.org/) with F#
 ## Run
 
 1. Set `AK_SERVER`, `AK_USERNAME` and `AK_PASSWORD` environment variables
-2. Build and run as usual
+2. Build and run as usual!
 
 ## License
 
