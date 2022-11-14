@@ -5,8 +5,8 @@ open System
 open System.Threading
 
 let consumeTopic clientConfig topicName =
-    let clientConfig: ClientConfig = clientConfig
-    let topicName: string = topicName
+    let clientConfig : ClientConfig = clientConfig
+    let topicName : string = topicName
 
     let config = ConsumerConfig clientConfig
 
@@ -14,15 +14,16 @@ let consumeTopic clientConfig topicName =
     config.AutoOffsetReset <- AutoOffsetReset.Earliest
     config.EnableAutoCommit <- false
 
-    let cancellation = new CancellationTokenSource()
+    let cancellation = new CancellationTokenSource ()
 
     Console.CancelKeyPress.Add (fun event ->
         event.Cancel <- true
-        cancellation.Cancel())
+        cancellation.Cancel ()
+    )
 
     let builder = ConsumerBuilder<string, string> config
 
-    use consumer = builder.Build()
+    use consumer = builder.Build ()
 
     do consumer.Subscribe topicName
 

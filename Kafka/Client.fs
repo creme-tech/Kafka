@@ -5,14 +5,14 @@ open System
 open System.Collections.Generic
 
 let private getConfig () =
-    let config = Dictionary<string, string>()
+    let config = Dictionary<string, string> ()
 
-    config.Add("bootstrap.servers", Environment.GetEnvironmentVariable "AK_SERVER")
-    config.Add("security.protocol", "SASL_SSL")
-    config.Add("sasl.mechanisms", "PLAIN")
-    config.Add("sasl.username", Environment.GetEnvironmentVariable "AK_USERNAME")
-    config.Add("sasl.password", Environment.GetEnvironmentVariable "AK_PASSWORD")
-    config.Add("session.timeout.ms", "45000")
+    config.Add ("bootstrap.servers", Environment.GetEnvironmentVariable "AK_SERVER")
+    config.Add ("security.protocol", "SASL_SSL")
+    config.Add ("sasl.mechanisms", "PLAIN")
+    config.Add ("sasl.username", Environment.GetEnvironmentVariable "AK_USERNAME")
+    config.Add ("sasl.password", Environment.GetEnvironmentVariable "AK_PASSWORD")
+    config.Add ("session.timeout.ms", "45000")
 
     config
 
